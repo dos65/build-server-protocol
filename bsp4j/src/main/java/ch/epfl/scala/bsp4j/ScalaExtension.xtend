@@ -51,12 +51,16 @@ class ScalacOptionsItem {
   @NonNull List<String> options
   @NonNull List<String> classpath
   @NonNull String classDirectory
+  String signaturesDirectory
   new(@NonNull BuildTargetIdentifier target, @NonNull List<String> options, @NonNull List<String> classpath,
-      @NonNull String classDirectory) {
+      @NonNull String classDirectory,
+      @NonNull String signaturesDirectory
+      ) {
     this.target = target
     this.options = options
     this.classpath = classpath
     this.classDirectory = classDirectory
+    this.signaturesDirectory = signaturesDirectory
    }
 }
 

@@ -380,7 +380,7 @@ trait Bsp4jShrinkers extends UtilShrinkers {
       options <- shrink(a.getOptions)
       classpath <- shrink(a.getClasspath)
       classDirectory <- shrink(a.getClassDirectory)
-    } yield new ScalacOptionsItem(target, options, classpath, classDirectory)
+    } yield new ScalacOptionsItem(target, options, classpath, classDirectory, null)
   }
 
   implicit def shrinkScalacOptionsParams: Shrink[ScalacOptionsParams] = Shrink { a =>

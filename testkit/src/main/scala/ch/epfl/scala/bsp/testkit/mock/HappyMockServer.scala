@@ -161,11 +161,29 @@ class HappyMockServer(base: File) extends AbstractMockServer {
       val options = List.empty[String].asJava
       val classpath = List("scala-library.jar").asJava
       val item1 =
-        new ScalacOptionsItem(targetId1, options, classpath, uriInTarget(targetId1, "out").toString)
+        new ScalacOptionsItem(
+          targetId1,
+          options,
+          classpath,
+          uriInTarget(targetId1, "out").toString,
+          null
+        )
       val item2 =
-        new ScalacOptionsItem(targetId2, options, classpath, uriInTarget(targetId2, "out").toString)
+        new ScalacOptionsItem(
+          targetId2,
+          options,
+          classpath,
+          uriInTarget(targetId2, "out").toString,
+          null
+        )
       val item3 =
-        new ScalacOptionsItem(targetId3, options, classpath, uriInTarget(targetId3, "out").toString)
+        new ScalacOptionsItem(
+          targetId3,
+          options,
+          classpath,
+          uriInTarget(targetId3, "out").toString,
+          null
+        )
       val result = new ScalacOptionsResult(List(item1, item2, item3).asJava)
       Right(result)
     }

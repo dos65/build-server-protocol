@@ -10,63 +10,75 @@ import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
 public class ScalacOptionsItem {
   @NonNull
   private BuildTargetIdentifier target;
-  
+
   @NonNull
   private List<String> options;
-  
+
   @NonNull
   private List<String> classpath;
-  
+
   @NonNull
   private String classDirectory;
-  
-  public ScalacOptionsItem(@NonNull final BuildTargetIdentifier target, @NonNull final List<String> options, @NonNull final List<String> classpath, @NonNull final String classDirectory) {
+
+  private String signaturesDirectory;
+
+  public ScalacOptionsItem(@NonNull final BuildTargetIdentifier target, @NonNull final List<String> options, @NonNull final List<String> classpath, @NonNull final String classDirectory, @NonNull final String signaturesDirectory) {
     this.target = target;
     this.options = options;
     this.classpath = classpath;
     this.classDirectory = classDirectory;
+    this.signaturesDirectory = signaturesDirectory;
   }
-  
+
   @Pure
   @NonNull
   public BuildTargetIdentifier getTarget() {
     return this.target;
   }
-  
+
   public void setTarget(@NonNull final BuildTargetIdentifier target) {
     this.target = Preconditions.checkNotNull(target, "target");
   }
-  
+
   @Pure
   @NonNull
   public List<String> getOptions() {
     return this.options;
   }
-  
+
   public void setOptions(@NonNull final List<String> options) {
     this.options = Preconditions.checkNotNull(options, "options");
   }
-  
+
   @Pure
   @NonNull
   public List<String> getClasspath() {
     return this.classpath;
   }
-  
+
   public void setClasspath(@NonNull final List<String> classpath) {
     this.classpath = Preconditions.checkNotNull(classpath, "classpath");
   }
-  
+
   @Pure
   @NonNull
   public String getClassDirectory() {
     return this.classDirectory;
   }
-  
+
   public void setClassDirectory(@NonNull final String classDirectory) {
     this.classDirectory = Preconditions.checkNotNull(classDirectory, "classDirectory");
   }
-  
+
+  @Pure
+  public String getSignaturesDirectory() {
+    return this.signaturesDirectory;
+  }
+
+  public void setSignaturesDirectory(final String signaturesDirectory) {
+    this.signaturesDirectory = signaturesDirectory;
+  }
+
   @Override
   @Pure
   public String toString() {
@@ -75,9 +87,10 @@ public class ScalacOptionsItem {
     b.add("options", this.options);
     b.add("classpath", this.classpath);
     b.add("classDirectory", this.classDirectory);
+    b.add("signaturesDirectory", this.signaturesDirectory);
     return b.toString();
   }
-  
+
   @Override
   @Pure
   public boolean equals(final Object obj) {
@@ -108,9 +121,14 @@ public class ScalacOptionsItem {
         return false;
     } else if (!this.classDirectory.equals(other.classDirectory))
       return false;
+    if (this.signaturesDirectory == null) {
+      if (other.signaturesDirectory != null)
+        return false;
+    } else if (!this.signaturesDirectory.equals(other.signaturesDirectory))
+      return false;
     return true;
   }
-  
+
   @Override
   @Pure
   public int hashCode() {
@@ -119,6 +137,7 @@ public class ScalacOptionsItem {
     result = prime * result + ((this.target== null) ? 0 : this.target.hashCode());
     result = prime * result + ((this.options== null) ? 0 : this.options.hashCode());
     result = prime * result + ((this.classpath== null) ? 0 : this.classpath.hashCode());
-    return prime * result + ((this.classDirectory== null) ? 0 : this.classDirectory.hashCode());
+    result = prime * result + ((this.classDirectory== null) ? 0 : this.classDirectory.hashCode());
+    return prime * result + ((this.signaturesDirectory== null) ? 0 : this.signaturesDirectory.hashCode());
   }
 }

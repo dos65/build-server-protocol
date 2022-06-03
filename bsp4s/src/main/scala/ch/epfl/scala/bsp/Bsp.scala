@@ -1097,7 +1097,8 @@ final case class ScalacOptionsItem(
     target: BuildTargetIdentifier,
     options: List[String],
     classpath: List[Uri],
-    classDirectory: Uri
+    classDirectory: Uri,
+    signaturesDirectory: Option[Uri]
 )
 
 object ScalacOptionsItem {

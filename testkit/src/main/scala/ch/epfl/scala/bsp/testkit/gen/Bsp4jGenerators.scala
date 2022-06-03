@@ -353,7 +353,7 @@ trait Bsp4jGenerators {
     options <- arbitrary[String].list
     classpath <- genFileUriString.list
     classDirectory <- genFileUriString
-  } yield new ScalacOptionsItem(target, options, classpath, classDirectory)
+  } yield new ScalacOptionsItem(target, options, classpath, classDirectory, null)
 
   lazy val genScalacOptionsParams: Gen[ScalacOptionsParams] = for {
     targets <- genBuildTargetIdentifier.list
